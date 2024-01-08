@@ -10,6 +10,7 @@
 
 ## 🎥 인앱 영상
 ![인앱 영상](https://github.com/ajounicemedia/HackSaMo/blob/main/%EC%9D%B8%EC%95%B1%20%EC%98%81%EC%83%81.gif)
+![인앱 영상2](https://github.com/ajounicemedia/HackSaMo/blob/main/%EC%9D%B8%EC%95%B1%20%EC%98%81%EC%83%812.gif)
 ## 🚀 멤버 구성 및 개발 기간
 - **PM** : 진현준
 - **개발** : 진현준
