@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".view.nav.myinfo.registermodify.academy.register.AuthAcademyFragment">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="15dp"
+            android:orientation="vertical">
+
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar_auth_academy"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
+                android:gravity="center"
+                android:minHeight="?attr/actionBarSize"
+                app:contentInsetStartWithNavigation="0dp">
+
+                <TextView
+                    android:id="@+id/toolbar_title_auth_academy"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="Your Title"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                    android:textColor="@color/text_theme_color"
+                    android:textStyle="bold" />
+            </androidx.appcompat.widget.Toolbar>
+
+            <TextView
+                android:id="@+id/tv_title_auth_acadmey"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="사업자등록 증명"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:textColor="@color/theme_color"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tv_des_auth_academy"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="사업자등록증 또는 사업자등록증명 업로드\n
+    · 상호,성명,사업 종류를 가리지 마세요"
+                android:textColor="@color/black" />
+
+            <TextView
+                android:id="@+id/tv_space2_auth_academy"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <ImageView
+                android:id="@+id/iv_auth_academy"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/tv_space3_auth_academy"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <Button
+                android:id="@+id/btn_img_uplode_auth_academy"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/custom_layout_border2"
+                android:text="이미지 업로드"
+                android:textColor="@color/black" />
+
+            <TextView
+                android:id="@+id/tv_space_auth_academy"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <Button
+                android:id="@+id/btn_next_auth_academy"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/custom_button_theme"
+                android:text="다음"
+                android:textColor="@color/white" />
+            <TextView
+                android:id="@+id/tv_space4_auth_academy"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+    </ScrollView>
+
+</FrameLayout>

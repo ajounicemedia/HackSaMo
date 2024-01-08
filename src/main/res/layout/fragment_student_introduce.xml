@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".view.nav.myinfo.registermodify.student.register.StudentIntroduceFragment">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:orientation="vertical">
+
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar_introduce_student"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
+                android:gravity="center"
+                android:minHeight="?attr/actionBarSize"
+                app:contentInsetStartWithNavigation="0dp">
+
+                <TextView
+                    android:id="@+id/toolbar_title_introduce_student"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="Your Title"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                    android:textColor="@color/text_theme_color"
+                    android:textStyle="bold" />
+            </androidx.appcompat.widget.Toolbar>
+
+            <TextView
+                android:id="@+id/tv_introduce_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="     자기소개"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:textColor="@color/theme_color"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tv_introduce_des"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:text="· 최근 선생님을 가장한 사이비 종교, 범죄가 발생하고 있습니다.\n   전화번호, sns 아이디, 외부 사이트 링크 등 개인 신상과 관련된 \n
+  정보는 컨택된 선생님에게만 채팅을 통해 개별적으로 알려주시\n   길 바랍니다.
+\n· 아래 내용은 자유롭게 삭제, 참고해서 작성해 주세요"
+                android:textAppearance="@style/TextAppearance.AppCompat.Small" />
+
+            <EditText
+                android:id="@+id/et_introduce_student"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="10dp"
+                android:background="@drawable/custom_layout_border2"
+                android:ems="10"
+                android:inputType="textMultiLine"
+                android:text="\n     · 최대 예산 (월 기준) :\n\n
+    · 과외 장소 :\n\n
+    · 과외 요일, 시간 :\n\n
+    · 과외 과목 :\n\n
+    · 학생의 현재 상황 : \n\n
+    · 선생님에 바라는 점 : "
+                android:textAllCaps="false"
+                android:textAppearance="@style/TextAppearance.AppCompat.Small" />
+
+            <TextView
+                android:id="@+id/tv_space_introduce_student"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <Button
+                android:id="@+id/btn_complete_introduce_student"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="확인"
+                android:textColor="@color/white"
+                android:background="@drawable/custom_button_theme"/>
+
+        </LinearLayout>
+    </ScrollView>
+</FrameLayout>

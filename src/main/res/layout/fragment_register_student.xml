@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".view.nav.myinfo.registermodify.student.register.RegisterStudentFragment">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="15dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar_register_student"
+                app:contentInsetStartWithNavigation="0dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
+                android:gravity="center"
+                android:minHeight="?attr/actionBarSize">
+
+                <TextView
+                    android:id="@+id/toolbar_title_register_student"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="Your Title"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                    android:textColor="@color/text_theme_color"
+                    android:textStyle="bold" />
+            </androidx.appcompat.widget.Toolbar>
+
+            <TextView
+                android:id="@+id/tv_space_register_student"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+            </TextView>
+
+            <ImageView
+                android:id="@+id/iv_choice_profile_picture_register_student"
+                app:srcCompat="@drawable/teacher_profileimage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="15dp" />
+
+            <TextView
+                android:id="@+id/tv_student_info_register_student"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="10dp"
+                android:layout_weight="1"
+                android:gravity="center_vertical"
+                android:paddingStart="7.5dp"
+                android:text="학생 정보"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:textColor="@color/theme_color"
+                android:textStyle="bold" />
+
+<!--            <LinearLayout-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="match_parent"-->
+<!--                android:layout_weight="1"-->
+<!--                android:orientation="horizontal"-->
+<!--                android:padding="3.5dp"-->
+<!--                android:paddingEnd="7.5dp">-->
+
+<!--                <ImageView-->
+<!--                    android:id="@+id/iv_nickname_register_student"-->
+<!--                    app:srcCompat="@drawable/teacher_nickname"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="match_parent"-->
+<!--                    android:layout_weight="5"-->
+<!--                    android:padding="17.5dp" />-->
+
+<!--                <EditText-->
+<!--                    android:id="@+id/et_nickname_register_student"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="match_parent"-->
+<!--                    android:layout_margin="10dp"-->
+<!--                    android:layout_weight="1"-->
+<!--                    android:background="@drawable/custom_layout_border"-->
+<!--                    android:ems="10"-->
+<!--                    android:gravity="center_vertical"-->
+<!--                    android:hint=" 닉네임"-->
+<!--                    android:inputType="text"-->
+<!--                    android:paddingStart="7.5dp" />-->
+<!--            </LinearLayout>-->
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="horizontal"
+                android:padding="3.5dp"
+                android:paddingEnd="7.5dp">
+
+                <ImageView
+                    android:id="@+id/iv_des_register_student"
+                    app:srcCompat="@drawable/teacher_introduction"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="5"
+                    android:padding="17.5dp" />
+
+                <EditText
+                    android:id="@+id/et_des_register_student"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="10dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/custom_layout_border"
+                    android:ems="10"
+                    android:gravity="center_vertical"
+                    android:hint=" 한줄소개"
+                    android:inputType="text"
+                    android:paddingStart="7.5dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="horizontal"
+                android:padding="3.5dp"
+                android:paddingEnd="7.5dp">
+
+                <ImageView
+                    android:id="@+id/iv_born_year_register_student"
+                    app:srcCompat="@drawable/teacher_age"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="5"
+                    android:padding="17.5dp" />
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="10dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/custom_layout_border"
+                    android:paddingStart="7.5dp">
+
+                    <Spinner
+                        android:id="@+id/spinner_born_year_register_student"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:spinnerMode="dialog" />
+                </FrameLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="horizontal"
+                android:padding="3.5dp"
+                android:paddingEnd="7.5dp">
+
+                <ImageView
+                    android:id="@+id/iv_gender_register_student"
+                    app:srcCompat="@drawable/teacher_gender"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="5"
+                    android:padding="17.5dp" />
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="10dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/custom_layout_border"
+                    android:paddingStart="7.5dp">
+
+                    <Spinner
+                        android:id="@+id/spinner_gender_register_student"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:spinnerMode="dialog" />
+                </FrameLayout>
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="horizontal"
+                android:padding="3.5dp"
+                android:paddingEnd="7.5dp">
+
+                <ImageView
+                    android:id="@+id/iv_way_register_student"
+                    app:srcCompat="@drawable/teacher_method"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="5"
+                    android:padding="17.5dp" />
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="10dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/custom_layout_border"
+                    android:paddingStart="7.5dp">
+
+                    <Spinner
+                        android:id="@+id/spinner_way_register_student"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:spinnerMode="dialog" />
+                </FrameLayout>
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/btn_space_register_student"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1.25"
+                android:background="@android:color/transparent" />
+
+            <Button
+                android:id="@+id/btn_space_register_student2"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1.25"
+                android:background="@android:color/transparent" />
+
+            <Button
+                android:id="@+id/btn_next_register_student"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/custom_button_theme"
+                android:text="다음"
+                android:textColor="@color/white" />
+
+            <Button
+                android:id="@+id/btn_space_register_student3"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1.25"
+                android:background="@android:color/transparent" />
+
+
+        </LinearLayout>
+    </ScrollView>
+</FrameLayout>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/option_default_image"
+        android:title="기본 이미지로 변경" />
+    <item
+        android:id="@+id/option_change_image"
+        android:title="다른 이미지로 변경" />
+
+</menu>

@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".view.nav.myinfo.registermodify.academy.register.AcademyLocalFragment">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="15dp"
+            android:orientation="vertical">
+
+            <WebView
+                android:id="@+id/webView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="5dp">
+
+            </WebView>
+
+            <LinearLayout
+                android:id="@+id/viewgroup_local_academy"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <androidx.appcompat.widget.Toolbar
+                    android:id="@+id/toolbar_academy_local"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@android:color/transparent"
+                    android:gravity="center"
+                    android:minHeight="?attr/actionBarSize"
+                    app:contentInsetStartWithNavigation="0dp">
+
+                    <TextView
+                        android:id="@+id/toolbar_title_academy_local"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:text="Your Title"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                        android:textColor="@color/text_theme_color"
+                        android:textStyle="bold" />
+                </androidx.appcompat.widget.Toolbar>
+
+                <TextView
+                    android:id="@+id/tv_title_local_academy"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text=" 학원주소"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                    android:textColor="@color/theme_color"
+                    android:textStyle="bold"></TextView>
+
+                <TextView
+                    android:id="@+id/tv_search_academy_local"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:background="@drawable/custom_layout_border"
+                    android:drawableEnd="@android:drawable/ic_menu_search"
+                    android:text=" 우편번호 검색"
+                    android:textAlignment="viewStart"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+
+                <TextView
+                    android:id="@+id/tv_local_number_academy_local"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:background="@drawable/custom_layout_border"
+                    android:text=" 우편번호"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+
+                <TextView
+                    android:id="@+id/tv_local_local_academy"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+
+                    android:layout_margin="5dp"
+                    android:background="@drawable/custom_layout_border"
+                    android:text=" 도로명주소"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+
+                <EditText
+                    android:id="@+id/et_detail_local"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:background="@drawable/custom_layout_border"
+                    android:ems="10"
+                    android:hint="상세주소"
+                    android:inputType="text"
+                    android:paddingStart="7.5dp"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+
+                <TextView
+                    android:id="@+id/tv_space_local_academy"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+                <Button
+                    android:id="@+id/btn_next_local_academy"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/custom_button_theme"
+                    android:text="다음"
+                    android:textColor="@color/white" />
+            </LinearLayout>
+
+
+        </LinearLayout>
+    </ScrollView>
+
+</FrameLayout>

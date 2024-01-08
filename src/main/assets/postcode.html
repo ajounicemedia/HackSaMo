@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Daum 우편번호 서비스</title>
+    <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+</head>
+<body>
+<script>
+    new daum.Postcode({
+        oncomplete: function (data) {
+            // 선택된 주소 정보를 Android 코드로 전달합니다.
+             console.log("Zonecode: " + data.zonecode);
+            console.log("Address: " + data.address);
+            window.Android.onAddressSelected(data.zonecode, data.address);
+
+        }
+
+    }).embed();
+</script>
+</body>
+</html>

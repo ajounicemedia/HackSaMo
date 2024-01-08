@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".view.nav.myinfo.registermodify.academy.register.AcademyIntroduceFragment">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:orientation="vertical">
+
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar_introduce_academy"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
+                android:gravity="center"
+                android:minHeight="?attr/actionBarSize"
+                app:contentInsetStartWithNavigation="0dp">
+
+                <TextView
+                    android:id="@+id/toolbar_title_introduce_academy"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="Your Title"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                    android:textColor="@color/text_theme_color"
+                    android:textStyle="bold" />
+            </androidx.appcompat.widget.Toolbar>
+
+            <TextView
+                android:id="@+id/tv_introduce_title_academy"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="자기소개"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:textColor="@color/theme_color"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tv_introduce_des_academy"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:text="· 성심성의껏 소개를 작성하면 매칭 확률이 올라갑니다.\n· 최근 학부모 또는 학생을 가장한 사이비 종교, 범죄가 발생하\n    고 있습니다. 전화번호, sns 아이디, 외부 사이트 링크 등 개\n    인 신상과 관련된 정보는 컨택된 학생에게만 채팅을 통해 개\n    별적으로 알려주시길 바랍니다.\n·
+아래 내용은 자유롭게 삭제, 참고해서 작성해 주세요."
+                android:textAppearance="@style/TextAppearance.AppCompat.Small" />
+
+            <EditText
+                android:id="@+id/et_introduce_academy"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="10dp"
+                android:background="@drawable/custom_layout_border2"
+                android:ems="10"
+                android:inputType="textMultiLine"
+                android:text="\n     · 과목당 학원비 (월 기준) :\n\n
+    · 상세 수업료 : 시간당 얼마, 주당 몇 회 몇 시간당 얼마\n\n
+    · 학원 위치 :\n\n
+    · 요일, 시간 :\n\n
+    · 과목 :\n\n
+    · 대상 학년 :\n\n
+    · 과목별 커리큘럼 : 1주차- ~, 2주차-~\n\n
+    · 과목별 수업내용 : 국어-비문학 독해, 화작문\n
+        영어-수능 영문법, 독해\n\n
+    · 강의 스타일 : 상세한 개념 설명과 심화 문제 풀이\n
+        많은 숙제 양으로 꼼꼼한 복습과 이해 유도\n\n"
+
+
+                android:textAllCaps="false"
+                android:textAppearance="@style/TextAppearance.AppCompat.Small" />
+
+            <TextView
+                android:id="@+id/tv_space_introduce_academy"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <Button
+                android:id="@+id/btn_complete_introduce_academy"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="확인"
+                android:textColor="@color/white"
+                android:background="@drawable/custom_button_theme"/>
+            <TextView
+                android:id="@+id/tv_space2_introduce_academy"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:id="@+id/tv_space3_introduce_academy"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+    </ScrollView>
+
+</FrameLayout>

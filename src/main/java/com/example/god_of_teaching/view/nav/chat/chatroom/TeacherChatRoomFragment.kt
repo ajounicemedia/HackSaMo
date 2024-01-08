@@ -1,0 +1,361 @@
+package com.example.god_of_teaching.view.nav.chat.chatroom
+
+import android.content.Context
+import android.net.Uri
+import android.os.Bundle
+import android.util.Log
+import androidx.fragment.app.Fragment
+import android.view.LayoutInflater
+import android.view.Menu
+import android.view.MenuInflater
+import android.view.View
+import android.view.ViewGroup
+import android.widget.Toast
+import androidx.appcompat.widget.Toolbar
+import androidx.activity.result.ActivityResultLauncher
+import androidx.activity.result.contract.ActivityResultContracts
+import androidx.appcompat.app.AlertDialog
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.Observer
+import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.god_of_teaching.R
+import com.example.god_of_teaching.databinding.FragmentChatRoomBinding
+import com.example.god_of_teaching.model.datastore.UserDataStoreHelper
+import com.example.god_of_teaching.model.`object`.util.MenuUtil
+import com.example.god_of_teaching.model.`object`.util.NavigationUtil
+import com.example.god_of_teaching.view.nav.chat.PreferenceUtils
+import com.example.god_of_teaching.view.nav.chat.adapter.ChatRoomAdapter
+import com.example.god_of_teaching.viewmodel.ChatViewModel
+import com.example.god_of_teaching.viewmodel.TeacherChatViewModel
+import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.android.material.snackbar.Snackbar
+import com.google.firebase.ktx.Firebase
+import com.google.firebase.storage.ktx.storage
+import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.flow.first
+import kotlinx.coroutines.launch
+import java.util.Calendar
+import java.util.Locale
+import java.util.TimeZone
+
+@AndroidEntryPoint
+class TeacherChatRoomFragment : Fragment() {
+    private var _binding:FragmentChatRoomBinding?=null
+    private val binding get() = _binding!!
+    private var otherName : String?=null
+    private var otherUid : String?=null
+    private val teacherChatView : TeacherChatViewModel by viewModels()
+    private val chatView : ChatViewModel by viewModels()
+    private lateinit var chatMessageAdapter: ChatRoomAdapter
+    private lateinit var linearLayoutManager: LinearLayoutManager
+    //sharedPreferences사용하기위해서 여기 뷰랑 연결되어 있을 때만 사용 가능하니까 주의하자
+    private lateinit var preferenceUtils: PreferenceUtils
+
+
+    // ActivityResultLauncher 초기화
+    private lateinit var selectPhotosLauncher: ActivityResultLauncher<String>
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+
+        otherName = arguments?.getString("other_name")
+        otherUid = arguments?.getString("other_uid")
+        otherUid?.let { teacherChatView.getTeacherMessage(it) }//채팅정보가져오기
+        //otherUid?.let { chatView.changeTeacherReadCheck(it) }//읽음처리
+
+        // ActivityResultLauncher 인스턴스 설정
+        selectPhotosLauncher = registerForActivityResult(ActivityResultContracts.GetMultipleContents()) { uris ->
+            // 선택된 사진의 URI 처리
+            handleSelectedPhotos(uris)
+        }
+
+    }
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        _binding = FragmentChatRoomBinding.inflate(inflater,container,false)
+
+
+
+        return binding.root
+    }
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        // Shared Preferences 인스턴스 생성 및 PreferenceUtils 초기화
+        val sharedPreferences = requireActivity().getSharedPreferences("myPrefs", Context.MODE_PRIVATE)
+        preferenceUtils = PreferenceUtils(sharedPreferences)
+
+        basicSetting()
+        sendMessage()
+        createAdapter()
+        observeChatMessages()
+        selectPhoto()
+        createMenu()
+        updateBlockMenuItem()
+    }
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
+    //뷰 기본세팅
+    private fun basicSetting()
+    {
+        val navigationView = activity?.findViewById<BottomNavigationView>(R.id.bottomNavigationView)
+        if (navigationView != null) {
+            navigationView.visibility = View.GONE
+        }
+        binding.toolbarTitleChatRoom.text = otherName
+        val navController = findNavController()
+        NavigationUtil.handleBackPress(this,navController)
+
+    }
+    //어댑터 생성
+    private fun createAdapter()
+    {
+
+        linearLayoutManager = LinearLayoutManager(context).apply {
+            stackFromEnd = true
+        }
+
+        binding.rvChatList.layoutManager = linearLayoutManager
+        chatMessageAdapter = otherUid?.let { ChatRoomAdapter(it) }!!
+        binding.rvChatList.adapter = chatMessageAdapter
+
+
+    }
+
+    //채팅 갱신
+    private fun observeChatMessages() {
+        teacherChatView.teacherChatMessages?.observe(viewLifecycleOwner, Observer { messages ->
+            //어댑터 다시 생성해야할거 대비
+//            if (!::chatMessageAdapter.isInitialized) {
+//                createAdapter()
+//            }
+            //채팅방내에서 새메시지 받을 때 채팅 리스트에서 새로운 메세지 안 보이게하기위해
+            otherUid?.let { teacherChatView.changeMessageStatus(it) }
+            chatMessageAdapter.submitList(messages)
+            linearLayoutManager.smoothScrollToPosition(binding.rvChatList,null,chatMessageAdapter.itemCount)//메세지 받았을 때 위로
+        })
+    }
+    //메세지 전송
+    private fun sendMessage()
+    {
+
+        binding.btnSend.setOnClickListener {
+            if(otherUid?.let { preferenceUtils.isBlackListed(it)} == true)
+            {
+                Toast.makeText(context, "차단된 유저에게는 메세지를 전송할 수 없습니다.", Toast.LENGTH_SHORT).show()
+            }
+            else{//차단이 아니면
+                val message = binding.etMessage.text.toString()
+                if(message.isNotEmpty())
+                {
+                    val currentDate = Calendar.getInstance().time
+                    //채팅 리스트에서 표시될 시간
+                    val dateFormatChatList = java.text.SimpleDateFormat("yyyy.MM.dd HH:mm", Locale.KOREA)
+                    dateFormatChatList.timeZone = TimeZone.getTimeZone("Asia/Seoul")
+                    val chatListTime = dateFormatChatList.format(currentDate)
+
+                    //채팅방 내에서 표시될 시간
+//                val dateFormatChatRoom = java.text.SimpleDateFormat("HH:mm", Locale.KOREA)
+//                dateFormatChatRoom.timeZone = TimeZone.getTimeZone("Asia/Seoul")
+//                val chatRoomTime = dateFormatChatRoom.format(currentDate)
+
+                    val fcmKey = getString(R.string.my_fcm_key)
+                    teacherChatView.updateTeacherChatList(otherUid!!,otherName!!,message,chatListTime)//채팅리스트 업데이트
+                    teacherChatView.updateTeacherChatRoom(otherUid!!,message, chatListTime,fcmKey)//채팅방 업데이트
+                    binding.etMessage.text.clear()//전송시 에딧 텍스트 비워줌
+                    linearLayoutManager.smoothScrollToPosition(binding.rvChatList,null,chatMessageAdapter.itemCount)//전송시 위로
+                }
+            }
+
+
+
+        }
+    }
+    // 사진 선택 메서드
+    private fun selectPhoto() {
+        binding.ivSelectPhoto.setOnClickListener {
+            selectPhotosLauncher.launch("image/*")
+        }
+
+    }
+
+    // 사진선택하는 메소드
+    private fun handleSelectedPhotos(uris: List<Uri>) {
+
+        val currentDate = Calendar.getInstance().time
+
+        //채팅 리스트에서 표시될 시간
+        val dateFormatChatList = java.text.SimpleDateFormat("yyyy.MM.dd HH:mm", Locale.KOREA)
+        dateFormatChatList.timeZone = TimeZone.getTimeZone("Asia/Seoul")
+        val chatListTime = dateFormatChatList.format(currentDate)
+
+        //채팅방 내에서 표시될 시간
+//        val dateFormatChatRoom = java.text.SimpleDateFormat("HH:mm", Locale.KOREA)
+//        dateFormatChatRoom.timeZone = TimeZone.getTimeZone("Asia/Seoul")
+//        val chatRoomTime = dateFormatChatRoom.format(currentDate)
+        // 선택된 사진을 Firebase Storage에 업로드하고 채팅 메시지 전송
+        if (uris.isNotEmpty()) {
+            if (uris.size > 3) {
+                Snackbar.make(binding.root, "사진은 3개까지 선택 가능합니다", Snackbar.LENGTH_SHORT).show()
+            } else {
+                // 사진 업로드 및 메시지 전송
+                val fcmKey = getString(R.string.my_fcm_key)
+                teacherChatView.uploadTeacherChatRoomPhotosAndSendMessage(otherUid!!, uris,chatListTime,otherUid!!,otherName!!,fcmKey)
+            }
+        }
+    }
+
+    //채팅내 메뉴
+    private fun createMenu()
+    {
+
+        binding.toolbarChatRoom.setOnMenuItemClickListener { menuItem ->
+            when (menuItem.itemId) {
+                //조건 추가 학생일 때 선생님일 때
+                R.id.other_info -> {
+                    val userDataStoreHelper = UserDataStoreHelper.getInstance(requireActivity())
+                    viewLifecycleOwner.lifecycleScope.launch {
+                       when(userDataStoreHelper.getStatus.first())
+                        {
+                            "student"->//학생이면 선생님 정보 보이기
+                            {
+                                val storageReference = Firebase.storage.reference.child("teachers/${otherUid}")//프사 있을 시
+                                storageReference.downloadUrl.addOnSuccessListener { uri ->
+                                    val navController = findNavController()
+                                    val bundle = Bundle()
+                                    bundle.putString("teacherImageUrl", uri.toString())
+                                    bundle.putString("other_uid",otherUid)
+                                    navController.navigate(R.id.teacherInfoFragment,bundle)
+                                }.addOnFailureListener {//상대방 프사 없을시
+                                    val navController = findNavController()
+                                    val bundle = Bundle()
+                                    bundle.putString("other_uid",otherUid)
+                                    navController.navigate(R.id.teacherInfoFragment,bundle)
+                                }
+                            }
+                           "teacher"->//선생님이면 학생정보 보기
+                           {
+                               val storageReference = Firebase.storage.reference.child("students/${otherUid}")
+                               storageReference.downloadUrl.addOnSuccessListener { uri ->
+                                   val navController = findNavController()
+                                   val bundle = Bundle()
+                                   bundle.putString("studentImageUrl", uri.toString())
+                                   bundle.putString("other_uid",otherUid)
+                                   navController.navigate(R.id.studentInfoFragment,bundle)
+                               }.addOnFailureListener {
+                                   val navController = findNavController()
+                                   val bundle = Bundle()
+                                   bundle.putString("other_uid",otherUid)
+                                   navController.navigate(R.id.studentInfoFragment,bundle)
+                               }
+
+                           }
+                        }
+                    }
+
+                    true
+                }
+                R.id.blacklist -> {//차단은 로컬에 넣어서 데이터 불러오는거 최소화
+                    blackList()
+                    true
+                }
+                // 알림 끄기
+                R.id.notification_setting -> {
+                    notification()
+                    //레포지토리에 참 트루 넣어주자
+
+                    true
+                }
+                R.id.report-> {//신고하기 버튼 신고하면 차단에도 추가
+                    report()
+
+                    true
+                }
+                R.id.go_out_chatroom-> {//채팅방 나가기
+                    teacherChatView.goOutTeacherChatRoom(otherUid!!)
+                    val navController = findNavController()
+                    navController.popBackStack()
+                    true
+                }
+                // 신고하기 추가
+                else -> false
+            }
+
+        }
+    }
+    //블랙리스트 추가 삭제
+    private fun blackList()
+    {
+        if (otherName?.let { preferenceUtils.isBlackListed(it)} == false)
+        {
+            chatView.addBlackList(otherName!!)
+            preferenceUtils.addBlackList(otherName!!)
+        }
+        else {
+            chatView.removeBlackList(otherName!!)
+            preferenceUtils.removeBlackList(otherName!!)
+        }
+    }
+    //알림 추가 해제
+    private fun notification()
+    {
+        if(preferenceUtils.isBlackNotification(otherName!!))
+        {
+            chatView.addBlackListNotify(otherName!!)
+            preferenceUtils.addNotificationBlocK(otherName!!)
+        }
+        else{
+            chatView.removeBlackListNotify(otherName!!)
+            preferenceUtils.removeNotificationBlock(otherName!!)
+        }
+    }
+    private fun report()
+    {
+        if (otherName?.let { preferenceUtils.isBlackListed(it)} == false)//이미 차단목록에 있는지 확인
+        {
+            chatView.addBlackList(otherName!!)
+            preferenceUtils.addBlackList(otherName!!)
+            if(!preferenceUtils.reportCheck(otherName!!))//이미 신고했는지 확인
+            {
+                preferenceUtils.addReportList(otherName!!)
+                val navController = findNavController()
+                val bundle = Bundle()
+                bundle.putString("other_uid",otherUid!!)
+                navController.navigate(R.id.reportReasonFragment,bundle)//신고화면으로 이동
+            }
+            else
+            {
+                Toast.makeText(context, "이미 신고한 유저입니다.", Toast.LENGTH_SHORT).show()
+            }
+
+        }
+        else{
+            if(!preferenceUtils.reportCheck(otherName!!))//이미 신고했는지 확인
+            {
+                val navController = findNavController()
+                val bundle = Bundle()
+                bundle.putString("other_uid",otherUid!!)
+                navController.navigate(R.id.reportReasonFragment,bundle)
+            }
+            else
+            {
+                Toast.makeText(context, "이미 신고한 유저입니다.", Toast.LENGTH_SHORT).show()
+            }
+        }
+    }
+    //상대유저가 블랙리스트인지 체크
+    private fun updateBlockMenuItem() {
+        val toolbar = view?.findViewById<Toolbar>(R.id.toolbar_chat_room)
+        toolbar?.menu?.findItem(R.id.blacklist)?.let { menuItem ->
+            otherName?.let {
+                menuItem.title = if (otherName?.let { preferenceUtils.isBlackListed(it)} == true) "차단 해제" else "차단"
+            }
+        }
+    }
+
+}
