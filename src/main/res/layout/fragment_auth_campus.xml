@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:visibility="visible"
+    tools:context=".view.nav.myinfo.registermodify.teacher.register.AuthCampusFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="10dp"
+        android:orientation="vertical">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar_auth_campus"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@android:color/transparent"
+            android:gravity="center"
+            android:minHeight="?attr/actionBarSize"
+            app:contentInsetStartWithNavigation="0dp">
+
+            <TextView
+                android:id="@+id/toolbar_title_auth_campus"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="Your Title"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                android:textColor="@color/text_theme_color"
+                android:textStyle="bold" />
+        </androidx.appcompat.widget.Toolbar>
+
+        <TextView
+            android:id="@+id/tv_auth_title_auth_campus"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="학력 증명"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:textColor="@color/theme_color" />
+
+        <TextView
+            android:id="@+id/tv_des_auth_campus"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="학력 증명은 학교 이메일 인증으로 진행됩니다.\n
+대학교를 입력한 후 학교 이메일을 입력해 주세요."
+            android:textColor="@color/black"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="5"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/iv_univ_auth_campus"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="17.5dp"
+                    android:layout_weight="5"
+                    app:srcCompat="@drawable/teacher_school" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
+
+                    <EditText
+                        android:id="@+id/et_input_univ_auth_campus"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_margin="10dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/custom_layout_border"
+                        android:ems="10"
+                        android:hint="   대학교"
+                        android:inputType="textPersonName"
+                        android:paddingStart="7.5dp" />
+
+                    <Button
+                        android:id="@+id/btn_check_univ"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="2"
+                        android:background="@drawable/custom_button_theme"
+                        android:text="인증가능한\n대학인지 확인"
+                        android:textColor="@color/white" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tv_visible_campus"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="인증 불가능한 대학교 입니다."
+            android:textColor="@color/design_default_color_error"
+            android:visibility="invisible" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="5"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/iv_email_auth_campus"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="17.5dp"
+                    android:layout_weight="1"
+                    app:srcCompat="@drawable/auth_email" />
+
+                <ImageView
+                    android:id="@+id/iv_code_auth_campus"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="17.5dp"
+                    android:layout_weight="1"
+                    app:srcCompat="@drawable/teacher_send" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <EditText
+                    android:id="@+id/et_input_email_auth_campus"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="10dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/custom_layout_border"
+                    android:ems="10"
+                    android:hint="   이메일"
+                    android:inputType="textPersonName"
+                    android:paddingStart="7.5dp" />
+                <EditText
+                    android:id="@+id/et_input_code_auth_campus"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="10dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/custom_layout_border"
+                    android:ems="10"
+                    android:hint="   인증번호"
+                    android:inputType="textPersonName"
+                    android:paddingStart="7.5dp" />
+
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <Button
+                android:id="@+id/btn_send_email_auth_campus"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="7.5dp"
+                android:background="@drawable/custom_button_theme2"
+                android:text="인증요청" />
+
+            <Button
+                android:id="@+id/btn_next_auth_campus"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="7.5dp"
+                android:background="@drawable/custom_button_theme"
+                android:text="확인"
+                android:textColor="@color/white" />
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/button4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="인증 정보 삭제(테스트용 버튼)" />
+
+    </LinearLayout>
+
+</FrameLayout>

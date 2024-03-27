@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="15dp"
+        android:orientation="vertical">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar_manage_status"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@android:color/transparent"
+            android:gravity="center"
+            android:minHeight="?attr/actionBarSize"
+            app:contentInsetStartWithNavigation="0dp">
+
+            <TextView
+                android:id="@+id/toolbar_title_manage_status"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="내 상태 설정하기"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                android:textColor="@color/text_theme_color"
+                android:textStyle="bold" />
+        </androidx.appcompat.widget.Toolbar>
+
+        <Switch
+            android:id="@+id/switch_teacher"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="선생님" />
+
+        <Switch
+            android:id="@+id/switch_academy"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="학원" />
+
+        <Switch
+            android:id="@+id/switch_student"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="학생" />
+
+        <TextView
+            android:id="@+id/tv_warning"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="한 개의 상태만 활성화 가능합니다."
+            android:textColor="@color/theme_color"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+</FrameLayout>

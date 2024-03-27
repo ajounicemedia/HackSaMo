@@ -1,0 +1,475 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_nav"
+    app:startDestination="@id/findFragment">
+
+    <fragment
+        android:id="@+id/chatFragment"
+        android:name="god.example.god_of_teaching.view.nav.chat.MainChatFragment"
+        android:label="fragment_chat"
+        tools:layout="@layout/fragment_chat" />
+    <fragment
+        android:id="@+id/findFragment"
+        android:name="god.example.god_of_teaching.view.nav.find.FindFragment"
+        android:label="fragment_find"
+        tools:layout="@layout/fragment_find" >
+        <action
+            android:id="@+id/action_findFragment_to_setupLocalFragment"
+            app:destination="@id/setupLocalFragment" />
+        <action
+            android:id="@+id/action_findFragment_to_setupSubjectFragment"
+            app:destination="@id/setupSubjectFragment" />
+        <action
+            android:id="@+id/action_findFragment_to_showAcademyListFragment"
+            app:destination="@id/showAcademyListFragment" />
+        <action
+            android:id="@+id/action_findFragment_to_showTeacherFragment"
+            app:destination="@id/showTeacherFragment" />
+        <action
+            android:id="@+id/action_findFragment_to_showStudentFragment"
+            app:destination="@id/showStudentFragment" />
+        <action
+            android:id="@+id/action_findFragment_to_myInfoFragment"
+            app:destination="@id/myInfoFragment" />
+        <action
+            android:id="@+id/action_findFragment_to_chatFragment"
+            app:destination="@id/chatFragment" />
+        <action
+            android:id="@+id/action_findFragment_to_mainWishListFragment"
+            app:destination="@id/mainWishListFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/myInfoFragment"
+        android:name="god.example.god_of_teaching.view.nav.myinfo.MyInfoFragment"
+        android:label="fragment_my_info"
+        tools:layout="@layout/fragment_my_info" >
+        <action
+            android:id="@+id/action_myInfoFragment_to_registerTeacherFragment"
+            app:destination="@id/registerTeacherFragment" />
+        <action
+            android:id="@+id/action_myInfoFragment_to_fixUserInfoFragment"
+            app:destination="@id/manageUserInfoFragment" />
+        <action
+            android:id="@+id/action_myInfoFragment_to_registerAcademyFragment"
+            app:destination="@id/registerAcademyFragment" />
+        <action
+            android:id="@+id/action_myInfoFragment_to_registerStudentFragment"
+            app:destination="@id/registerStudentFragment" />
+        <action
+            android:id="@+id/action_myInfoFragment_to_manageTeacherProfileFragment"
+            app:destination="@id/manageTeacherProfileFragment" />
+        <action
+            android:id="@+id/action_myInfoFragment_to_modifyStudentProfileFragment"
+            app:destination="@id/modifyStudentProfileFragment" />
+        <action
+            android:id="@+id/action_myInfoFragment_to_modifyAcademyProfileFragment"
+            app:destination="@id/modifyAcademyProfileFragment" />
+        <action
+            android:id="@+id/action_myInfoFragment_to_manageUserStatusFragment"
+            app:destination="@id/manageUserStatusFragment" />
+        <action
+            android:id="@+id/action_myInfoFragment_to_manageBlackListFragment"
+            app:destination="@id/manageBlackListFragment" />
+        <action
+            android:id="@+id/action_myInfoFragment_to_manageNotificationFragment"
+            app:destination="@id/manageNotificationFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/registerTeacherFragment"
+        android:name="god.example.god_of_teaching.view.nav.myinfo.registermodify.teacher.register.RegisterTeacherFragment"
+        android:label="fragment_register_teacher"
+        tools:layout="@layout/fragment_register_teacher" >
+        <action
+            android:id="@+id/action_registerTeacherFragment_to_authCampusEmailFragment"
+            app:destination="@id/authCampusEmailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/manageUserInfoFragment"
+        android:name="god.example.god_of_teaching.view.nav.myinfo.changemyinfo.ManageUserInfoFragment"
+        android:label="fragment_fix_user_info"
+        tools:layout="@layout/fragment_manage_user_info" >
+        <action
+            android:id="@+id/action_manageUserInfoFragment_to_inputPasswordForPasswordFragment"
+            app:destination="@id/inputPasswordForPasswordFragment" />
+        <action
+            android:id="@+id/action_manageUserInfoFragment_to_inputPasswordForNicknameFragment"
+            app:destination="@id/inputPasswordForNicknameFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/changeNicknameFragment"
+        android:name="god.example.god_of_teaching.view.nav.myinfo.changemyinfo.ChangeNicknameFragment"
+        android:label="fragment_change_nickname"
+        tools:layout="@layout/fragment_change_nickname" />
+    <fragment
+        android:id="@+id/changePasswordFragment"
+        android:name="god.example.god_of_teaching.view.nav.myinfo.changemyinfo.ChangePasswordFragment"
+        android:label="fragment_change_password"
+        tools:layout="@layout/fragment_change_password" />
+    <fragment
+        android:id="@+id/inputPasswordForNicknameFragment"
+        android:name="god.example.god_of_teaching.view.nav.myinfo.changemyinfo.InputPasswordForNicknameFragment"
+        android:label="InputPasswordForNicknameFragment" >
+        <action
+            android:id="@+id/action_inputPasswordForNicknameFragment_to_changeNicknameFragment"
+            app:destination="@id/changeNicknameFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/inputPasswordForPasswordFragment"
+        android:name="god.example.god_of_teaching.view.nav.myinfo.changemyinfo.InputPasswordForPasswordFragment"
+        android:label="InputPasswordForPasswordFragment" >
+        <action
+            android:id="@+id/action_inputPasswordForPasswordFragment_to_changePasswordFragment"
+            app:destination="@id/changePasswordFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/authCampusEmailFragment"
+        android:name="god.example.god_of_teaching.view.nav.myinfo.registermodify.teacher.register.AuthCampusFragment"
+        android:label="fragment_auth_campus_email"
+        tools:layout="@layout/fragment_auth_campus" >
+        <action
+            android:id="@+id/action_authCampusEmailFragment_to_choiceLocalFragment"
+            app:destination="@id/choiceLocalFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/choiceLocalFragment"
+        android:name="god.example.god_of_teaching.view.nav.myinfo.registermodify.teacher.register.TeacherLocalFragment"
+        android:label="fragment_choice_local"
+        tools:layout="@layout/fragment_teacher_choice_local" >
+        <action
+            android:id="@+id/action_choiceLocalFragment_to_teacherChoiceSubjectFragment"
+            app:destination="@id/teacherChoiceSubjectFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/teacherChoiceSubjectFragment"
+        android:name="god.example.god_of_teaching.view.nav.myinfo.registermodify.teacher.register.TeacherSubjectFragment"
+        android:label="fragment_teacher_choice_subject"
+        tools:layout="@layout/fragment_teacher_choice_subject" >
+        <action
+            android:id="@+id/action_teacherChoiceSubjectFragment_to_teacherIntroduceFragment"
+            app:destination="@id/teacherIntroduceFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/teacherIntroduceFragment"
+        android:name="god.example.god_of_teaching.view.nav.myinfo.registermodify.teacher.register.TeacherIntroduceFragment"
+        android:label="fragment_teacher_introduce"
+        tools:layout="@layout/fragment_teacher_introduce" >
+        <action
+            android:id="@+id/action_teacherIntroduceFragment_to_teacherResisterCompleteFragment"
+            app:destination="@id/RegisterCompleteFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/RegisterCompleteFragment"
+        android:name="god.example.god_of_teaching.view.nav.myinfo.registermodify.RegisterCompleteFragment"
+        android:label="fragment_teacher_resister_complete"
+        tools:layout="@layout/fragment_register_complete" />
+    <fragment
+        android:id="@+id/registerAcademyFragment"
+        android:name="god.example.god_of_teaching.view.nav.myinfo.registermodify.academy.register.RegisterAcademyFragment"
+        android:label="fragment_register_academy"
+        tools:layout="@layout/fragment_register_academy" >
+        <action
+            android:id="@+id/action_registerAcademyFragment_to_authAcademyFragment"
+            app:destination="@id/authAcademyFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/authAcademyFragment"
+        android:name="god.example.god_of_teaching.view.nav.myinfo.registermodify.academy.register.AuthAcademyFragment"
+        android:label="fragment_auth_academy"
+        tools:layout="@layout/fragment_auth_academy" >
+        <action
+            android:id="@+id/action_authAcademyFragment_to_academyLocalFragment"
+            app:destination="@id/academyLocalFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/academyLocalFragment"
+        android:name="god.example.god_of_teaching.view.nav.myinfo.registermodify.academy.register.AcademyLocalFragment"
+        android:label="fragment_academy_local"
+        tools:layout="@layout/fragment_academy_local" >
+        <action
+            android:id="@+id/action_academyLocalFragment_to_academySearchedAddressFragment"
+            app:destination="@id/academySearchedAddressFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/academySubjectFragment"
+        android:name="god.example.god_of_teaching.view.nav.myinfo.registermodify.academy.register.AcademySubjectFragment"
+        android:label="fragment_academy_subject"
+        tools:layout="@layout/fragment_academy_subject" >
+        <action
+            android:id="@+id/action_academySubjectFragment_to_academyIntroduceFragment"
+            app:destination="@id/academyIntroduceFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/academyIntroduceFragment"
+        android:name="god.example.god_of_teaching.view.nav.myinfo.registermodify.academy.register.AcademyIntroduceFragment"
+        android:label="fragment_academy_introduce"
+        tools:layout="@layout/fragment_academy_introduce" >
+        <action
+            android:id="@+id/action_academyIntroduceFragment_to_teacherResisterCompleteFragment"
+            app:destination="@id/RegisterCompleteFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/registerStudentFragment"
+        android:name="god.example.god_of_teaching.view.nav.myinfo.registermodify.student.register.RegisterStudentFragment"
+        android:label="fragment_register_student"
+        tools:layout="@layout/fragment_register_student" >
+        <action
+            android:id="@+id/action_registerStudentFragment_to_studentLocalFragment"
+            app:destination="@id/studentLocalFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/studentLocalFragment"
+        android:name="god.example.god_of_teaching.view.nav.myinfo.registermodify.student.register.StudentLocalFragment"
+        android:label="StudentLocalFragment" >
+        <action
+            android:id="@+id/action_studentLocalFragment_to_studentSubjectFragment"
+            app:destination="@id/studentSubjectFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/studentSubjectFragment"
+        android:name="god.example.god_of_teaching.view.nav.myinfo.registermodify.student.register.StudentSubjectFragment"
+        android:label="StudentSubjectFragment" >
+        <action
+            android:id="@+id/action_studentSubjectFragment_to_studentIntroduceFragment"
+            app:destination="@id/studentIntroduceFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/studentIntroduceFragment"
+        android:name="god.example.god_of_teaching.view.nav.myinfo.registermodify.student.register.StudentIntroduceFragment"
+        android:label="fragment_student_introduce"
+        tools:layout="@layout/fragment_student_introduce" >
+        <action
+            android:id="@+id/action_studentIntroduceFragment_to_RegisterCompleteFragment"
+            app:destination="@id/RegisterCompleteFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/manageTeacherProfileFragment"
+        android:name="god.example.god_of_teaching.view.nav.myinfo.registermodify.teacher.modify.ModifyTeacherProfileFragment"
+        android:label="ManageTeacherProfileFragment" >
+        <action
+            android:id="@+id/action_manageTeacherProfileFragment_to_modifyMyInfoTextFragment"
+            app:destination="@id/modifyMyInfoTextFragment" />
+        <action
+            android:id="@+id/action_manageTeacherProfileFragment_to_modifyTeacherIntroduceFragment"
+            app:destination="@id/modifyTeacherIntroduceFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/modifyMyInfoTextFragment"
+        android:name="god.example.god_of_teaching.view.nav.myinfo.registermodify.teacher.modify.ModifyTeacherInfoTextFragment"
+        android:label="fragment_modify_my_info_text"
+        tools:layout="@layout/fragment_modify_my_info_text" >
+        <action
+            android:id="@+id/action_modifyMyInfoTextFragment_to_modifyTeacherLocalFragment"
+            app:destination="@id/modifyTeacherLocalFragment" />
+        <action
+            android:id="@+id/action_modifyMyInfoTextFragment_to_modifyTeacherSubjectFragment"
+            app:destination="@id/modifyTeacherSubjectFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/modifyTeacherLocalFragment"
+        android:name="god.example.god_of_teaching.view.nav.myinfo.registermodify.teacher.modify.ModifyTeacherLocalFragment"
+        android:label="ModifyTeacherLocalFragment" />
+    <fragment
+        android:id="@+id/modifyTeacherSubjectFragment"
+        android:name="god.example.god_of_teaching.view.nav.myinfo.registermodify.teacher.modify.ModifyTeacherSubjectFragment"
+        android:label="ModifyTeacherSubjectFragment" />
+    <fragment
+        android:id="@+id/modifyTeacherIntroduceFragment"
+        android:name="god.example.god_of_teaching.view.nav.myinfo.registermodify.teacher.modify.ModifyTeacherIntroduceFragment"
+        android:label="ModifyTeacherIntroduceFragment" />
+    <fragment
+        android:id="@+id/modifyStudentProfileFragment"
+        android:name="god.example.god_of_teaching.view.nav.myinfo.registermodify.student.modfiy.ModifyStudentProfileFragment"
+        android:label="ModifyStudentProfileFragment" >
+        <action
+            android:id="@+id/action_modifyStudentProfileFragment_to_modifyStudentInfoTextFragment"
+            app:destination="@id/modifyStudentInfoTextFragment" />
+        <action
+            android:id="@+id/action_modifyStudentProfileFragment_to_modifyStudentLocalFragment"
+            app:destination="@id/modifyStudentLocalFragment" />
+        <action
+            android:id="@+id/action_modifyStudentProfileFragment_to_modifyStudentSubjectFragment"
+            app:destination="@id/modifyStudentSubjectFragment" />
+        <action
+            android:id="@+id/action_modifyStudentProfileFragment_to_modifyStudentIntroduceFragment"
+            app:destination="@id/modifyStudentIntroduceFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/modifyStudentInfoTextFragment"
+        android:name="god.example.god_of_teaching.view.nav.myinfo.registermodify.student.modfiy.ModifyStudentInfoTextFragment"
+        android:label="ModifyStudentInfoTextFragment" />
+    <fragment
+        android:id="@+id/modifyStudentLocalFragment"
+        android:name="god.example.god_of_teaching.view.nav.myinfo.registermodify.student.modfiy.ModifyStudentLocalFragment"
+        android:label="ModifyStudentLocalFragment" />
+    <fragment
+        android:id="@+id/modifyStudentSubjectFragment"
+        android:name="god.example.god_of_teaching.view.nav.myinfo.registermodify.student.modfiy.ModifyStudentSubjectFragment"
+        android:label="ModifyStudentSubjectFragment" />
+    <fragment
+        android:id="@+id/modifyStudentIntroduceFragment"
+        android:name="god.example.god_of_teaching.view.nav.myinfo.registermodify.student.modfiy.ModifyStudentIntroduceFragment"
+        android:label="ModifyStudentIntroduceFragment" />
+    <fragment
+        android:id="@+id/modifyAcademyProfileFragment"
+        android:name="god.example.god_of_teaching.view.nav.myinfo.registermodify.academy.modify.ModifyAcademyProfileFragment"
+        android:label="ModifyAcademyProfileFragment" >
+        <action
+            android:id="@+id/action_modifyAcademyProfileFragment_to_modifyAcademyInfoTextFragment"
+            app:destination="@id/modifyAcademyInfoTextFragment" />
+        <action
+            android:id="@+id/action_modifyAcademyProfileFragment_to_modifyAcademySubjectFragment"
+            app:destination="@id/modifyAcademySubjectFragment" />
+        <action
+            android:id="@+id/action_modifyAcademyProfileFragment_to_modifyAcademyIntroduceFragment"
+            app:destination="@id/modifyAcademyIntroduceFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/modifyAcademyInfoTextFragment"
+        android:name="god.example.god_of_teaching.view.nav.myinfo.registermodify.academy.modify.ModifyAcademyInfoTextFragment"
+        android:label="ModifyAcademyInfoTextFragment" />
+    <fragment
+        android:id="@+id/modifyAcademySubjectFragment"
+        android:name="god.example.god_of_teaching.view.nav.myinfo.registermodify.academy.modify.ModifyAcademySubjectFragment"
+        android:label="ModifyAcademySubjectFragment" />
+    <fragment
+        android:id="@+id/setupLocalFragment"
+        android:name="god.example.god_of_teaching.view.nav.find.SetupLocalFragment"
+        android:label="SetupLocalFragment" />
+    <fragment
+        android:id="@+id/setupSubjectFragment"
+        android:name="god.example.god_of_teaching.view.nav.find.SetupSubjectFragment"
+        android:label="SetupSubjectFragment" />
+    <fragment
+        android:id="@+id/modifyAcademyIntroduceFragment"
+        android:name="god.example.god_of_teaching.view.nav.myinfo.registermodify.academy.modify.ModifyAcademyIntroduceFragment"
+        android:label="ModifyAcademyIntroduceFragment" />
+    <fragment
+        android:id="@+id/academySearchedAddressFragment"
+        android:name="god.example.god_of_teaching.view.nav.myinfo.registermodify.academy.register.AcademySearchedAddressFragment"
+        android:label="AcademySearchedAddressFragment" >
+        <action
+            android:id="@+id/action_academySearchedAddressFragment_to_academySubjectFragment"
+            app:destination="@id/academySubjectFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/showAcademyListFragment"
+        android:name="god.example.god_of_teaching.view.nav.myinfo.academy.register.ShowAcademyFragment"
+        android:label="ShowAcademyListFragment" >
+        <action
+            android:id="@+id/action_showAcademyListFragment_to_detailAcademyInfoFragment"
+            app:destination="@id/detailAcademyInfoFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/detailAcademyInfoFragment"
+        android:name="god.example.god_of_teaching.view.nav.find.list.DetailAcademyInfoFragment"
+        android:label="fragment_detail_academy_info"
+        tools:layout="@layout/fragment_detail_academy_info" />
+    <fragment
+        android:id="@+id/showTeacherFragment"
+        android:name="god.example.god_of_teaching.view.nav.find.list.ShowTeacherFragment"
+        android:label="fragment_find_list"
+        tools:layout="@layout/fragment_find_list" >
+        <action
+            android:id="@+id/action_showTeacherFragment_to_detailTeacherInfoFragment"
+            app:destination="@id/detailTeacherInfoFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/detailTeacherInfoFragment"
+        android:name="god.example.god_of_teaching.view.nav.find.list.DetailTeacherInfoFragment"
+        android:label="fragment_detail_teacher_info"
+        tools:layout="@layout/fragment_detail_teacher_info" />
+    <fragment
+        android:id="@+id/showStudentFragment"
+        android:name="god.example.god_of_teaching.view.nav.find.list.ShowStudentFragment"
+        android:label="ShowStudentFragment" >
+        <action
+            android:id="@+id/action_showStudentFragment_to_detailStudentInfoFragment"
+            app:destination="@id/detailStudentInfoFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/detailStudentInfoFragment"
+        android:name="god.example.god_of_teaching.view.nav.find.list.DetailStudentInfoFragment"
+        android:label="fragment_detail_student_info"
+        tools:layout="@layout/fragment_detail_student_info" />
+    <fragment
+        android:id="@+id/mainWishListFragment"
+        android:name="god.example.god_of_teaching.view.nav.mywishlist.MainWishListFragment"
+        android:label="fragment_main_wish_list"
+        tools:layout="@layout/fragment_main_wish_list" />
+    <fragment
+        android:id="@+id/studentToTeacherChatRoomFragment"
+        android:name="god.example.god_of_teaching.view.nav.chat.chatroom.StudentToTeacherChatRoomFragment"
+        android:label="TeacherChatRoomFragment" >
+        <action
+            android:id="@+id/action_teacherChatRoomFragment_to_reportReasonFragment"
+            app:destination="@id/reportReasonFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/manageUserStatusFragment"
+        android:name="god.example.god_of_teaching.view.nav.myinfo.changemyinfo.ManageUserStatusFragment"
+        android:label="ManageUserStatusFragment" />
+    <fragment
+        android:id="@+id/teacherInfoFragment"
+        android:name="god.example.god_of_teaching.view.nav.chat.chatroom.TeacherInfoFragment"
+        android:label="TeacherInfoFragment" />
+    <fragment
+        android:id="@+id/studentInfoFragment"
+        android:name="god.example.god_of_teaching.view.nav.chat.chatroom.StudentInfoFragment"
+        android:label="StudentInfoFragment" />
+    <fragment
+        android:id="@+id/reportReasonFragment"
+        android:name="god.example.god_of_teaching.view.nav.chat.ReportReasonFragment"
+        android:label="ReportReasonFragment" />
+    <fragment
+        android:id="@+id/teacherToStudentChatRoomFragment"
+        android:name="god.example.god_of_teaching.view.nav.chat.chatroom.TeacherToStudentChatRoomFragment"
+        android:label="StudentChatRoomFragment" >
+        <action
+            android:id="@+id/action_studentChatRoomFragment_to_reportReasonFragment"
+            app:destination="@id/reportReasonFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/studentToAcademyChatRoomFragment"
+        android:name="god.example.god_of_teaching.view.nav.chat.chatroom.StudentToAcademyChatRoomFragment"
+        android:label="AcademyChatRoomFragment" >
+        <action
+            android:id="@+id/action_academyChatRoomFragment_to_reportReasonFragment"
+            app:destination="@id/reportReasonFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/academyInfoFragment"
+        android:name="god.example.god_of_teaching.view.nav.chat.chatroom.AcademyInfoFragment"
+        android:label="AcademyInfoFragment" />
+    <fragment
+        android:id="@+id/inputPasswordForDeleteAccount"
+        android:name="god.example.god_of_teaching.view.nav.myinfo.changemyinfo.InputPasswordForDeleteAccount"
+        android:label="InputPasswordForDeleteAccount" />
+    <fragment
+        android:id="@+id/deleteAccountFragment"
+        android:name="god.example.god_of_teaching.view.nav.myinfo.changemyinfo.DeleteAccountFragment"
+        android:label="DeleteAccountFragment" />
+    <fragment
+        android:id="@+id/modifyAcademySearchedLoaclFragment"
+        android:name="god.example.god_of_teaching.view.nav.myinfo.registermodify.academy.modify.ModifyAcademySearchedLoaclFragment"
+        android:label="ModifyAcademySearchedLoaclFragment" />
+    <fragment
+        android:id="@+id/manageBlackListFragment"
+        android:name="god.example.god_of_teaching.view.nav.myinfo.changemyinfo.ManageBlackListFragment"
+        android:label="ManageBlackListFragment" />
+    <fragment
+        android:id="@+id/manageNotificationFragment"
+        android:name="god.example.god_of_teaching.view.nav.myinfo.changemyinfo.ManageNotificationFragment"
+        android:label="ManageNotificationFragment" />
+    <fragment
+        android:id="@+id/academyToStudentChatRoomFragment"
+        android:name="god.example.god_of_teaching.view.nav.chat.chatroom.AcademyToStudentChatRoomFragment"
+        android:label="AcademyToStudentChatRoomFragment" />
+    <fragment
+        android:id="@+id/uploadTeacherCertificateFragment"
+        android:name="god.example.god_of_teaching.view.nav.myinfo.registermodify.teacher.register.UploadTeacherCertificateFragment"
+        android:label="UploadTeacherCertificateFragment" />
+
+
+</navigation>

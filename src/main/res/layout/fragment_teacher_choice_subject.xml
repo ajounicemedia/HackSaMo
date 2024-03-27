@@ -1,0 +1,846 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".view.nav.myinfo.registermodify.teacher.register.TeacherSubjectFragment">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="15dp">
+
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar_choice_subject"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
+                android:gravity="center"
+                android:minHeight="?attr/actionBarSize"
+                app:contentInsetStartWithNavigation="0dp">
+
+                <TextView
+                    android:id="@+id/toolbar_title_choice_subject"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="Your Title"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                    android:textColor="@color/text_theme_color"
+                    android:textStyle="bold" />
+            </androidx.appcompat.widget.Toolbar>
+
+            <TextView
+                android:id="@+id/tv_subject"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="과목"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+                android:textColor="@color/theme_color"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tv_major_subject"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="주요 과목"
+                android:textColor="@color/theme_color"
+                android:textStyle="bold" />
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+                    <CheckBox
+                        android:id="@+id/cb_korean_teacher"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="국어" />
+
+                    <CheckBox
+                        android:id="@+id/cb_math_teacher"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="수학" />
+
+                    <CheckBox
+                        android:id="@+id/cb_society_teacher"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="사회" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+                    <CheckBox
+                        android:id="@+id/cb_science_teacher"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="과학" />
+
+                    <CheckBox
+                        android:id="@+id/cb_english_teacher"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="영어" />
+                </LinearLayout>
+
+
+
+            <TextView
+                android:id="@+id/tv_elementary"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="초등"
+                android:textColor="@color/theme_color"
+                android:textStyle="bold" />
+
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+                    <CheckBox
+                        android:id="@+id/cb_elementary_korean_teacher"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="초등국어" />
+
+                    <CheckBox
+                        android:id="@+id/cb_elementary_math_teacher"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="초등수학" />
+
+                    <CheckBox
+                        android:id="@+id/cb_elementary_society_teacher"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="초등사회" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+                    <CheckBox
+                        android:id="@+id/cb_elementary_science_teacher"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="초등과학" />
+
+                    <CheckBox
+                        android:id="@+id/cb_elementary_english_teacher"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="초등영어" />
+                </LinearLayout>
+
+
+            <TextView
+                android:id="@+id/tv_middle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="중등"
+                android:textColor="@color/theme_color"
+                android:textStyle="bold" />
+
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+                    <CheckBox
+                        android:id="@+id/cb_middle_korean_teacher"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="중등국어" />
+
+                    <CheckBox
+                        android:id="@+id/cb_middle_math_teacher"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="중등수학" />
+
+                    <CheckBox
+                        android:id="@+id/cb_middle_society_teacher"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="중등사회" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+                    <CheckBox
+                        android:id="@+id/cb_middle_science_teacher"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="중등과학" />
+
+                    <CheckBox
+                        android:id="@+id/cb_middle_english_teacher"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="중등영어" />
+
+                    <CheckBox
+                        android:id="@+id/cb_middle_history_teacher"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="중등역사" />
+                </LinearLayout>
+
+
+
+            <TextView
+                android:id="@+id/tv_high_korean_teacher"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="고등국어"
+                android:textColor="@color/theme_color"
+                android:textStyle="bold" />
+
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+                    <CheckBox
+                        android:id="@+id/cb_high_korean_teacher"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="고등국어" />
+
+                    <CheckBox
+                        android:id="@+id/cb_reading_teacher"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="독서" />
+
+                    <CheckBox
+                        android:id="@+id/cb_literature_teacher"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="문학" />
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+                    <CheckBox
+                        android:id="@+id/cb_speechandcomposition_teacher"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="화법과 작문" />
+
+                    <CheckBox
+                        android:id="@+id/cb_languageandmedia_teacher"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="언어와 매체" />
+
+
+                </LinearLayout>
+
+
+
+            <TextView
+                android:id="@+id/tv_high_math_teacher"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="고등수학"
+                android:textColor="@color/theme_color"
+                android:textStyle="bold" />
+
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+                    <CheckBox
+                        android:id="@+id/cb_high_math_teacher"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="고등수학" />
+
+                    <CheckBox
+                        android:id="@+id/cb_math1_teacher"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="수I" />
+
+                    <CheckBox
+                        android:id="@+id/cb_math2_teacher"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="수II" />
+                    <CheckBox
+                        android:id="@+id/cb_calculus_teacher"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="미적분" />
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+                    <CheckBox
+                        android:id="@+id/cb_probability_teacher"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="확통" />
+
+                    <CheckBox
+                        android:id="@+id/cb_geometry_teacher"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="기하" />
+                    <CheckBox
+                        android:id="@+id/cb_ecnomicmath_teacher"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="경제수학" />
+
+
+                </LinearLayout>
+
+
+            <TextView
+                android:id="@+id/tv_high_society_teacher"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="고등사회"
+                android:textColor="@color/theme_color"
+                android:textStyle="bold" />
+
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+                    <CheckBox
+                        android:id="@+id/cb_intergratedsociety_teacher"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="통합사회" />
+
+                    <CheckBox
+                        android:id="@+id/cb_economic_teacher"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="경제" />
+
+                    <CheckBox
+                        android:id="@+id/cb_historyofeastasia_teacher"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="동아시아사" />
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+                    <CheckBox
+                        android:id="@+id/cb_socialculture_teacher"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="사회문화" />
+
+                    <CheckBox
+                        android:id="@+id/cb_lifeandethics_teacher"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="생활과 윤리" />
+                    <CheckBox
+                        android:id="@+id/cb_worldhistory_teacher"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="세계사" />
+
+
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+                    <CheckBox
+                        android:id="@+id/cb_worldgeography_teacher"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="세계지리" />
+
+                    <CheckBox
+                        android:id="@+id/cb_ethicsandideas_teacher"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="윤리와 사상" />
+                    <CheckBox
+                        android:id="@+id/cb_politicsandlaw_teacher"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="정치와 법" />
+
+
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+                    <CheckBox
+                        android:id="@+id/cb_koreanhistory_teacher"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="한국사" />
+
+                    <CheckBox
+                        android:id="@+id/cb_koreangeography_teacher"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="한국지리" />
+
+                </LinearLayout>
+
+
+            <TextView
+                android:id="@+id/tv_high_science_teacher"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="고등과학"
+                android:textColor="@color/theme_color"
+                android:textStyle="bold" />
+
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+                    <CheckBox
+                        android:id="@+id/cb_intergratedscience_teacher"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="통합과학" />
+
+                    <CheckBox
+                        android:id="@+id/cb_physics1_teacher"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="물리I" />
+
+                    <CheckBox
+                        android:id="@+id/cb_physics2_teacher"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="물리II" />
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+                    <CheckBox
+                        android:id="@+id/cb_chemistry1_teacher"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="화학I" />
+
+                    <CheckBox
+                        android:id="@+id/cb_chemistry2_teacher"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="화학II" />
+
+
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+                    <CheckBox
+                        android:id="@+id/cb_lifescience1_teacher"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="생명과학I" />
+
+                    <CheckBox
+                        android:id="@+id/cb_lifescience2_teacher"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="생명과학II" />
+
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+                    <CheckBox
+                        android:id="@+id/cb_earthsciece1_teacher"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="지구과학I" />
+
+                    <CheckBox
+                        android:id="@+id/cb_earthsciece2_teacher"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="지구과학II" />
+
+                </LinearLayout>
+
+
+            <TextView
+                android:id="@+id/tv_high_english_teacher"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="고등영어"
+                android:textColor="@color/theme_color"
+                android:textStyle="bold" />
+
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <CheckBox
+                    android:id="@+id/cb_high_english_teacher"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="고등영어" />
+
+                <CheckBox
+                    android:id="@+id/cb_csatenglish_teacher"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="수능영어" />
+
+
+
+
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/tv_second_language_teacher"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="제 2 외국어, 한문"
+                android:textColor="@color/theme_color"
+                android:textStyle="bold" />
+
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <CheckBox
+                    android:id="@+id/cb_german_teacher"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="독일어" />
+
+                <CheckBox
+                    android:id="@+id/cb_french_teacher"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="프랑스어" />
+                <CheckBox
+                    android:id="@+id/cb_spanish_teacher"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="스페인어" />
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <CheckBox
+                    android:id="@+id/cb_chinese_teacher"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="중국어" />
+
+                <CheckBox
+                    android:id="@+id/cb_japanese_teacher"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="일본어" />
+                <CheckBox
+                    android:id="@+id/cb_russian_teacher"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="러시아어" />
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <CheckBox
+                    android:id="@+id/cb_arabic_teacher"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="아랍어" />
+
+                <CheckBox
+                    android:id="@+id/cb_vietnamese_teacher"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="베트남어" />
+                <CheckBox
+                    android:id="@+id/cb_chinesewriting_teacher"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="한문" />
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <CheckBox
+                    android:id="@+id/cb_indonesian_teacher"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="인도네시아어" />
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/tv_entrance_teacher"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="입시"
+                android:textColor="@color/theme_color"
+                android:textStyle="bold" />
+
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+                    <CheckBox
+                        android:id="@+id/cb_highentrance_teacher"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="특목고 입시" />
+
+                    <CheckBox
+                        android:id="@+id/cb_highentrancewriting_teacher"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="고입 자소서" />
+                    <CheckBox
+                        android:id="@+id/cb_highentrancetalking_teacher"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="고입 면접" />
+
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+                    <CheckBox
+                        android:id="@+id/cb_univentrancewriting_teacher"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="대입 자소서" />
+
+                    <CheckBox
+                        android:id="@+id/cb_univentrancetalking_teacher"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="대입 면접" />
+                    <CheckBox
+                        android:id="@+id/cb_aptitudetest_teacher"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="적성검사" />
+
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+                    <CheckBox
+                        android:id="@+id/cb_essay_teacher"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="논술" />
+
+                    <CheckBox
+                        android:id="@+id/cb_humanitiesessay_teacher"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="문과 논술" />
+                    <CheckBox
+                        android:id="@+id/cb_mathematicalessay_teacher"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="이과 논술" />
+
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+                    <CheckBox
+                        android:id="@+id/cb_occasionalconsulting_teacher"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="수시 컨설팅" />
+                    <CheckBox
+                        android:id="@+id/cb_ontimeconsulting_teacher"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="정시 컨설팅" />
+
+                </LinearLayout>
+
+            <TextView
+                android:id="@+id/tv_etc_teacher"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="기타"
+                android:textColor="@color/theme_color"
+                android:textStyle="bold" />
+
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+                    <CheckBox
+                        android:id="@+id/cb_coding_teacher"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="코딩" />
+
+                    <CheckBox
+                        android:id="@+id/cb_photoshop_teacher"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="포토샵" />
+
+                    <CheckBox
+                        android:id="@+id/cb_illustrator_teacher"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="일러스트레이터" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+                    <CheckBox
+                        android:id="@+id/cb_videoediting_teacher"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="영상 편집" />
+
+                    <CheckBox
+                        android:id="@+id/cb_art_teacher"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="미술" />
+
+                    <CheckBox
+                        android:id="@+id/cb_music_teacher"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="음악" />
+
+                    <CheckBox
+                        android:id="@+id/cb_etc_koreahistory_teacher"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="햔국사" />
+
+                </LinearLayout>
+
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                />
+            <Button
+                android:id="@+id/btn_next_choice_subject_teacher"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="다음"
+                android:textColor="@color/white"
+                android:background="@drawable/custom_button_theme"/>
+
+
+        </LinearLayout>
+
+
+    </ScrollView>
+
+
+
+</FrameLayout>

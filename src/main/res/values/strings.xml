@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">학사모</string>
+    <string name="univ_cert_key">791e5c09-e0b8-4683-a03c-67e3a7fc4f61</string>
+    <string name="default_notification_channel_id">default_notification_channel_id</string>
+    <string name="my_fcm_key">https://fcm.googleapis.com/v1/projects/godofteaching-4f448/messages:send</string>
+    <string name="json_key">"godofteaching-4f448-3cd4c700ada3.json"</string>
+    <string name="firebase_messaging_key">"https://www.googleapis.com/auth/firebase.messaging"</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>
