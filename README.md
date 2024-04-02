@@ -2,9 +2,9 @@
 
 ## 📜 학사모 소개  
 ![프로젝트 소개 이미지](https://github.com/ajounicemedia/HackSaMo/blob/main/%ED%95%99%EC%82%AC%EB%AA%A8%EC%84%A4%EB%AA%85.PNG)
-## 🔄 학사모 기획서 및 apk 파일
+## 🔄 학사모 기획서 및 플레이스토어 링크
   - [학사모 기획서](https://github.com/ajounicemedia/HackSaMo/blob/main/%ED%95%99%EC%82%AC%EB%AA%A8%20%EA%B8%B0%ED%9A%8D%EC%84%9C.pdf)
-  - [학사모 apk 파일](https://github.com/ajounicemedia/HackSaMo/blob/main/app-debug.zip)
+  - [플레이스토어 링크]([https://github.com/ajounicemedia/HackSaMo/blob/main/app-debug.zip](https://play.google.com/store/apps/details?id=god.example.god_of_teaching))
 
 ## 🎥 인앱 영상
 ![인앱 영상](https://github.com/ajounicemedia/HackSaMo/blob/main/%EC%9D%B8%EC%95%B1%20%EC%98%81%EC%83%81.gif)
