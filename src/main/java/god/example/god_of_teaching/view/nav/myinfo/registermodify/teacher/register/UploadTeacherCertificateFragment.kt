@@ -14,12 +14,13 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.yalantis.ucrop.UCrop
+import dagger.hilt.android.AndroidEntryPoint
 import god.example.god_of_teaching.R
 import god.example.god_of_teaching.databinding.FragmentUploadTeacherCertificateBinding
 import god.example.god_of_teaching.model.`object`.util.NavigationUtil
 import god.example.god_of_teaching.viewmodel.TeacherViewModel
 import java.io.File
-
+@AndroidEntryPoint
 class UploadTeacherCertificateFragment : Fragment() {
     private val REQUEST_GALLERY = 1001
     private var resultUri: Uri?=null

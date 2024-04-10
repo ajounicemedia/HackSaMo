@@ -25,8 +25,8 @@ class TeacherPagingSource(
             val currentPage = params.key ?: STARTING_KEY
             val baseQuery = db.collection("teachers")
                 .whereArrayContainsAny("availableLocal", selectedLocation)
-                .limit(pageSize.toLong())
-
+              //  .limit(pageSize.toLong())
+            Log.d("321321321",selectedLocation.toString())
             val pageQuery = lastDocumentSnapshot?.let {
                 baseQuery.startAfter(it)
             } ?: baseQuery

@@ -8,10 +8,12 @@ import android.view.ViewGroup
 import android.widget.CheckBox
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import dagger.hilt.android.AndroidEntryPoint
+import god.example.god_of_teaching.R
 import god.example.god_of_teaching.databinding.FragmentTeacherChoiceSubjectBinding
 import god.example.god_of_teaching.model.`object`.data.SubjectData
 import god.example.god_of_teaching.model.`object`.util.MenuUtil
@@ -58,7 +60,9 @@ class ModifyTeacherSubjectFragment: Fragment() {
     private fun basicSetting()
     {
 
-        binding.btnNextChoiceSubjectTeacher.text = "확인"
+        binding.btnNextChoiceSubjectTeacher.isEnabled=true
+        binding.btnNextChoiceSubjectTeacher.setBackgroundResource(R.drawable.custom_button_theme)
+        binding.btnNextChoiceSubjectTeacher.setTextColor(ContextCompat.getColor(requireContext(), R.color.neutral_white))
         val navController = findNavController()
         MenuUtil.setupMenu(requireActivity(),navController)
         ToolbarUtil.setupToolbar(activity as AppCompatActivity, binding.toolbarChoiceSubject,"과목 변경",binding.toolbarTitleChoiceSubject)
@@ -70,9 +74,13 @@ class ModifyTeacherSubjectFragment: Fragment() {
         for (id in checkBoxIdList) {
             val checkBox = binding.root.findViewById<CheckBox>(id)
             checkBox.setOnCheckedChangeListener { buttonView, isChecked ->
-                if (isChecked) {
-                    mySubjectList.add(buttonView.text.toString())
-                } else {
+                if(isChecked)
+                {
+                    if (!mySubjectList.contains(buttonView.text.toString())) {
+                        mySubjectList.add(buttonView.text.toString())
+                    }
+                }
+                else {
                     mySubjectList.remove(buttonView.text.toString())
                 }
                 Log.d("리스트 체크", mySubjectList.toString())
@@ -109,6 +117,7 @@ class ModifyTeacherSubjectFragment: Fragment() {
                         checkBox.isChecked = true
                     }
                 }
+                Log.d("321321321",mySubjectList.toString())
             }
 
     }

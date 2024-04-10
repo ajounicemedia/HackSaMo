@@ -3,14 +3,23 @@ package god.example.god_of_teaching.view.nav.find
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
+import android.view.Menu
+import android.view.MenuInflater
+import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import android.widget.CheckBox
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.constraintlayout.compose.State
+import androidx.core.content.ContentProviderCompat.requireContext
+import androidx.core.content.ContextCompat
+import androidx.core.view.MenuHost
+import androidx.core.view.MenuProvider
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
+import com.bumptech.glide.manager.Lifecycle
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import dagger.hilt.android.AndroidEntryPoint
 import god.example.god_of_teaching.R
@@ -31,6 +40,10 @@ class SetupSubjectFragment : Fragment(){
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         super.onCreate(savedInstanceState)
         _binding = FragmentTeacherChoiceSubjectBinding.inflate(inflater, container, false)
+
+
+
+
         return binding.root
     }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -38,6 +51,19 @@ class SetupSubjectFragment : Fragment(){
         basicSetting()
         checkSubject()
         next()
+
+        ///왼쪽 위 뒤로가기
+        val menuHost: MenuHost = requireActivity()
+        menuHost.addMenuProvider(object : MenuProvider {
+            override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {
+            }
+            override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
+                val navController = findNavController()
+                navController.popBackStack()
+                return true
+            }
+        })
+
 
     }
     override fun onDestroyView() {
@@ -51,8 +77,12 @@ class SetupSubjectFragment : Fragment(){
         if (navigationView != null) {
             navigationView.visibility = View.GONE
         }
-        binding.btnNextChoiceSubjectTeacher.text = "확인"
-        ToolbarUtil.setupToolbar(activity as AppCompatActivity, binding.toolbarChoiceSubject,"과목 선택",binding.toolbarTitleChoiceSubject)
+        (activity as AppCompatActivity).setSupportActionBar(binding.toolbarChoiceSubject)
+        (activity as AppCompatActivity).supportActionBar?.apply {
+            setDisplayShowTitleEnabled(false)// 기본 제목 표시를 비활성화
+            setDisplayHomeAsUpEnabled(true)//뒤로가기 활성화
+        }
+        //ToolbarUtil.setupToolbar(activity as AppCompatActivity, binding.toolbarChoiceSubject,"과목 선택",binding.toolbarTitleChoiceSubject)
         mySubjectList = mutableListOf()
         val navController = findNavController()
         NavigationUtil.handleBackPress(this,navController)
@@ -65,8 +95,16 @@ class SetupSubjectFragment : Fragment(){
             checkBox.setOnCheckedChangeListener { buttonView, isChecked ->
                 if (isChecked) {
                     mySubjectList.add(buttonView.text.toString())
+                    binding.btnNextChoiceSubjectTeacher.isEnabled=true
+                    binding.btnNextChoiceSubjectTeacher.setBackgroundResource(R.drawable.custom_button_theme)
+                    binding.btnNextChoiceSubjectTeacher.setTextColor(ContextCompat.getColor(requireContext(), R.color.neutral_white))
                 } else {
                     mySubjectList.remove(buttonView.text.toString())
+                    if (mySubjectList.size == 0) {
+                        binding.btnNextChoiceSubjectTeacher.isEnabled=false
+                        binding.btnNextChoiceSubjectTeacher.setBackgroundResource(R.drawable.custom_disable_button_theme)
+                        binding.btnNextChoiceSubjectTeacher.setTextColor(ContextCompat.getColor(requireContext(), R.color.neutral_60))
+                    }
                 }
                 Log.d("리스트 체크", mySubjectList.toString())
             }
@@ -84,4 +122,6 @@ class SetupSubjectFragment : Fragment(){
             }
         }
     }
+
+
 }

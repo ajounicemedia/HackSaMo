@@ -23,7 +23,7 @@ class AcademyPagingSource(
             val pageSize = 5
             val currentPage = params.key ?: STARTING_KEY
             val baseQuery = db.collection("academies")
-                .whereArrayContainsAny("availableLocal", selectedLocation)
+                .whereArrayContainsAny("searchedLocal", selectedLocation)
                 .limit(pageSize.toLong())
 
             val pageQuery = lastDocumentSnapshot?.let {

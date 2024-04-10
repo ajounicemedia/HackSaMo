@@ -100,10 +100,14 @@ class ModifyTeacherLocalFragment : Fragment() {
                     Toast.makeText(context,"5개를 초과한 지역을 등록할 수 없습니다", Toast.LENGTH_SHORT).show()
                 }
                 myLocalAdapter = MyLocalAdapter(myLocalList) {myLocalPosition ->
-                    // 리스트에서 해당 위치의 항목 제거
-                    myLocalList.removeAt(myLocalPosition)
-                    // 어댑터에 항목이 제거됨을 알림
-                    myLocalAdapter.notifyItemRemoved(myLocalPosition)
+                    if(myLocalList.size>0)
+                    {
+                        // 리스트에서 해당 위치의 항목 제거
+                        myLocalList.removeAt(myLocalPosition)
+                        // 어댑터에 항목이 제거됨을 알림
+                        myLocalAdapter.notifyItemRemoved(myLocalPosition)
+                    }
+
                 }
                 binding.rvMyLocalChoiceLocal.layoutManager = LinearLayoutManager(context)
                 binding.rvMyLocalChoiceLocal.adapter = myLocalAdapter

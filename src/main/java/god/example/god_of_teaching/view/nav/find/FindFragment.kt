@@ -157,7 +157,7 @@ class FindFragment : Fragment() {
                 {
                     findView.findAcademies(selectedSubject!!, selectedLocation!!)
                     val navController = findNavController()
-                    navController.navigate(R.id.showAcademyListFragment)
+                    navController.navigate(R.id.showAcademyFragment)
 //                    프래그먼트로 이동
 //                     teacherListData가 null일씨 해당 조건을 만족하는 ~~가 없습니다 추가
                 }
@@ -219,7 +219,7 @@ class FindFragment : Fragment() {
         findView.searchedTeachers.observe(viewLifecycleOwner) { teachers ->
             teacherListData = teachers
         }
-        findView.searchedAcademys.observe(viewLifecycleOwner) {academies ->
+        findView.searchedAcademies.observe(viewLifecycleOwner) { academies ->
             academyListData = academies
         }
         findView.searchedStudents.observe(viewLifecycleOwner) {students ->
@@ -259,7 +259,7 @@ class FindFragment : Fragment() {
             if(academy)
             {
                 binding.btnAcademyFind.setBackgroundResource(R.drawable.custom_button_theme4)
-                binding.btnAcademyFind.setTextColor(ContextCompat.getColor(requireContext(), R.color.white))
+                binding.btnAcademyFind.setTextColor(ContextCompat.getColor(requireContext(), R.color.neutral_white))
                 binding.btnTeacherFind.setBackgroundResource(R.drawable.custom_button_theme3)
                 binding.btnTeacherFind.setTextColor(ContextCompat.getColor(requireContext(), R.color.black))
                 binding.btnStudentFind.setBackgroundResource(R.drawable.custom_button_theme3)
@@ -279,7 +279,7 @@ class FindFragment : Fragment() {
                 binding.btnStudentFind.setBackgroundResource(R.drawable.custom_button_theme3)
                 binding.btnStudentFind.setTextColor(ContextCompat.getColor(requireContext(), R.color.black))
                 binding.btnTeacherFind.setBackgroundResource(R.drawable.custom_button_theme4)
-                binding.btnTeacherFind.setTextColor(ContextCompat.getColor(requireContext(), R.color.white))
+                binding.btnTeacherFind.setTextColor(ContextCompat.getColor(requireContext(), R.color.neutral_white))
             }
             else
             {
@@ -291,7 +291,7 @@ class FindFragment : Fragment() {
             if(student)
             {
                 binding.btnStudentFind.setBackgroundResource(R.drawable.custom_button_theme4)
-                binding.btnStudentFind.setTextColor(ContextCompat.getColor(requireContext(), R.color.white))
+                binding.btnStudentFind.setTextColor(ContextCompat.getColor(requireContext(), R.color.neutral_white))
                 binding.btnAcademyFind.setBackgroundResource(R.drawable.custom_button_theme3)
                 binding.btnAcademyFind.setTextColor(ContextCompat.getColor(requireContext(), R.color.black))
                 binding.btnTeacherFind.setBackgroundResource(R.drawable.custom_button_theme3)

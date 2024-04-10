@@ -40,11 +40,17 @@ class AuthViewModel @Inject constructor (application: Application,
     private val _loginCheck = MutableLiveData<Boolean>()
     val loginCheck: LiveData<Boolean>
         get() = _loginCheck
+    private val _loginMessage = MutableLiveData<String>()
+    val loginMessage: LiveData<String>
+        get() = _loginMessage
     fun login(email:String,password: String)
     {
-        authRepository.login(email,password)
-        {
-            _loginCheck.value = it
+        authRepository.login(email,password) { isSuccess, message ->
+            if (isSuccess) {
+                _loginCheck.value = true
+            } else {
+                _loginMessage.value = message // LiveData<String>을 사용하여 메시지 상태를 관리
+            }
         }
     }
     //authRepository - join 호출
@@ -80,14 +86,13 @@ class AuthViewModel @Inject constructor (application: Application,
         }
     }
     //authRepository - findPassword 호출
-    private val _emailCheck = MutableLiveData<Boolean>()
-    val  emailCheck: LiveData<Boolean>
+    private val _emailCheck = MutableLiveData<Pair<Boolean, String?>>()
+    val emailCheck: LiveData<Pair<Boolean, String?>>
         get() = _emailCheck
-    fun sendEmail(email: String)
-    {
-        authRepository.findPassword(email)
-        {
-            _emailCheck.value=it
+
+    fun sendEmail(email: String) {
+        authRepository.findPassword(email) { result ->
+            _emailCheck.value = result
         }
     }
     //authRepository - deleteAccount 호출

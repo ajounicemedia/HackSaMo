@@ -35,7 +35,7 @@ class AcademyRepository(private val userDataStoreHelper: UserDataStoreHelper,
         CoroutineScope(Dispatchers.IO).launch {
             val uid = userDataStoreHelper.getUid.first()
             val nickname = userDataStoreHelper.getNickname.first()
-            val data = hashMapOf("nickname" to nickname, "des" to des, "classAge" to classAge)
+            val data = hashMapOf("uid" to uid,"nickname" to nickname, "des" to des, "classAge" to classAge)
             db.collection("academies").document(uid).set(data).addOnFailureListener{ exception ->
                 Log.d("버그", "AcademyRepository에서 uid, 닉네임, 한줄 소개, 수업 대상 ${exception.message}")
             }

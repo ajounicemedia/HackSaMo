@@ -403,6 +403,8 @@ class StudentToTeacherChatRepository@Inject constructor(private val userDataStor
         db.collection("users").document(otherUid).get().addOnSuccessListener { document ->
             val otherToken = document.getString("fcmToken") ?: return@addOnSuccessListener
 
+            Log.d("12312312355", "$fcmKey $otherToken")
+
 
             val jsonMediaType = "application/json; charset=utf-8".toMediaType()
             val jsonObject = JSONObject().apply {

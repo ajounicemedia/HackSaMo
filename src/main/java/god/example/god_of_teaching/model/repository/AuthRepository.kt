@@ -6,7 +6,12 @@ import android.content.SharedPreferences
 
 import android.util.Log
 import com.google.auth.oauth2.GoogleCredentials
+import com.google.firebase.FirebaseNetworkException
+import com.google.firebase.FirebaseTooManyRequestsException
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseAuthException
+import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException
+import com.google.firebase.auth.FirebaseAuthInvalidUserException
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.SetOptions
 import com.google.firebase.firestore.ktx.firestore
@@ -95,7 +100,7 @@ class AuthRepository@Inject constructor(private val userDataStoreHelper: UserDat
             }
     }
     //로그인
-    fun login(email: String, password: String, callback: (Boolean) -> Unit) {
+    fun login(email: String, password: String, callback: (Boolean, String) -> Unit) {
         firebaseAuth.signInWithEmailAndPassword(email, password)
             .addOnCompleteListener { task ->
                 if (task.isSuccessful && task.result?.user != null) {
@@ -111,16 +116,29 @@ class AuthRepository@Inject constructor(private val userDataStoreHelper: UserDat
                                     Log.w("버그", "AuthRepository에서 회원가입 실패", task.exception)
                                 }
                         }
-                        callback(true)
+                        callback(true, null.toString())
                     }.addOnFailureListener {
                         Log.d("버그", "AuthRepository login에서 토근 발급 실패", task.exception)
                     }
 
                 } else {
-                    Log.d("버그", "AuthRepository에서 로그인 실패", task.exception)
-                    callback(false)
+                    var errorMessage = "로그인에 실패했습니다. 잠시 후 다시 시도해주세요."
+                    if (task.exception is FirebaseAuthException) {
+                        val errorCode = (task.exception as FirebaseAuthException).errorCode
+                        errorMessage = when (errorCode) {
+                            "ERROR_INVALID_EMAIL" -> "유효하지 않은 이메일 형식입니다."
+                            "ERROR_WRONG_PASSWORD" -> "비밀번호가 일치하지 않습니다."
+                            "ERROR_USER_NOT_FOUND" -> "존재하지 않는 이메일입니다."
+                            "ERROR_NETWORK_REQUEST_FAILED" -> "인터넷 연결을 확인해주세요."
+                            else -> errorMessage
+                        }
+                        Log.d("로그인 관찰", "실패: $errorCode")
+                    }
+
+                    callback(false, errorMessage)
                 }
             }
+
     }
     //회원가입
     fun join(email: String, password: String,  nickname:String,callback: (Boolean) -> Unit) {
@@ -180,17 +198,22 @@ class AuthRepository@Inject constructor(private val userDataStoreHelper: UserDat
         }
     }
     //비밀번호 찾기
-    fun findPassword(email:String,callback: (Boolean) -> Unit)
-    {
+    fun findPassword(email: String, callback: (Pair<Boolean, String?>) -> Unit) {
         FirebaseAuth.getInstance().sendPasswordResetEmail(email).addOnCompleteListener { task ->
             if (task.isSuccessful) {
-                // 이메일 전송 성공
                 Log.d("ResetPassword", "Email sent.")
-                callback(true)
+                callback(Pair(true, null)) // 성공 메시지는 필요 없으므로 null
             } else {
-                // 에러 처리
-                Log.d("버그", "AuthRepository에서 비밀번호 못 찾는 중 Error: ${task.exception?.message}")
-                callback(false)
+                val exception = task.exception
+                val errorMessage = when {
+                    exception is FirebaseAuthInvalidUserException -> "존재하지 않는 사용자입니다."
+                    exception is FirebaseAuthInvalidCredentialsException -> "이메일 형식이 잘못되었습니다."
+                    exception is FirebaseNetworkException -> "인터넷 연결을 확인해주세요."
+                    exception is FirebaseTooManyRequestsException -> "요청이 너무 많습니다. 잠시 후 다시 시도해주세요."
+                    else -> "알 수 없는 오류가 발생했습니다. 다시 시도해주세요."
+                }
+                Log.d("버그", "AuthRepository에서 비밀번호 찾기 중 오류: ${exception?.message}")
+                callback(Pair(false, errorMessage))
             }
         }
     }

@@ -35,10 +35,10 @@ class FindViewModel @Inject constructor
 
 
     //searchedAcademies - 관찰
-    val searchedAcademys: MutableLiveData<MutableList<AcademyInfo>?> = MutableLiveData(null)
+    val searchedAcademies: MutableLiveData<MutableList<AcademyInfo>?> = MutableLiveData(null)
     init {
         findRepository.searchedAcademies.observeForever { academies ->
-            searchedAcademys.postValue(academies)
+            searchedAcademies.postValue(academies)
         }
     }
     //searchedTeachers - 관찰
