@@ -1,7 +1,7 @@
 # 🎓 무료 과외 매칭 플랫폼 학사모  
 
 ## 📜 학사모 소개  
-![프로젝트 소개 이미지](https://github.com/ajounicemedia/HackSaMo/blob/main/%ED%95%99%EC%82%AC%EB%AA%A8%EC%84%A4%EB%AA%85.PNG)
+![프로젝트 소개 이미지](https://github.com/ajounicemedia/HackSaMo/blob/main/%ED%95%99%EC%82%AC%EB%AA%A8%EA%B0%84%EB%8B%A8%EC%84%A4%EB%AA%85.png)
 ## 🔄 학사모 기획서 및 개발 현황
 - **개발 현황(자세한 사항은 코드를 확인해주시면 감사하겠습니다)** 
   - 기능 구현(채팅, 찾기, 위시리스트, 로그인, 내 정보 등)은 모두 완료되었고 테스트 진행 후(현재 오류 고치거나 코드 리팩토링 진행 중) 유저가 직접사용해도 지장이 없다고 판단되면 플레이스토어에 출시할 예정입니다.
